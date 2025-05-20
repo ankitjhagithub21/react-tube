@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import VideoCardSkeleton from "./VideoCardSkeleton";
+import { Link } from "react-router-dom";
 
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 
@@ -33,7 +34,7 @@ const VideoCard = ({ video }) => {
   }
 
   return (
-    <div className="w-full cursor-pointer" >
+    <Link className="w-full cursor-pointer" to={`/watch?v=${id}`}>
       <img
         src={snippet?.thumbnails?.medium?.url}
         alt="thumbnail"
@@ -52,7 +53,7 @@ const VideoCard = ({ video }) => {
           <p className="text-sm text-gray-400">{snippet?.channelTitle}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
